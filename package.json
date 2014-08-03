@@ -1,0 +1,23 @@
+{
+  "name": "snapcard",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "express": "^4.2.0",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "^0.7.4",
+    "jade": "~1.3.0",
+    "bitcoinjs-lib": "^1.0.2",
+    "shortid": "^2.0.1",
+    "mongodb": "^1.4.8",
+    "ws": "^0.4.31",
+    "lodash": "^2.4.1",
+    "request": "^2.39.0"
+  }
+}

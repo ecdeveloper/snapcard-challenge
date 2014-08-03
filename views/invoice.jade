@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	h1 Invoice
+	hr
+	.row
+		.col-md-6
+			p Invoice #: #{invoiceId}
+			p Total Value: #{invoiceValue}
+			p Paid: #{paidValue}
+			p Owed: #{owedValue}
+			p Invoice status: #{invoiceStatus}
+
+			i @TODO: Validate Input Value
+			.input-group
+				span.input-group-addon I will pay
+				input.form-control(type="text" ng-keyup="checkValue()" value="#{owedValue}")
+				span.input-group-addon BTC
+
+			br
+			br
+
+			a(href="bitcoin:#{invoiceAddress}?amount=#{owedValue}") Click 2 Pay 
+			| Or scan the code &rarr;
+
+		.col-md-6
+			img(src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:#{invoiceAddress}?amount=#{owedValue}")

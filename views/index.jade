@@ -1,0 +1,48 @@
+extends layout
+
+block content
+	h1= title
+	button.btn.btn-primary(ng-click="generateInvoice()") Generate Invoice
+
+	script(type="text/ng-template" id="invoiceModal.html")
+		.modal-header
+			h3.modal-title Invoice
+
+		.modal-body
+			i(ng-show="{{invoiceReady}}") Wait a bit...
+			div(ng-hide="{{invoiceReady}}")
+				.row
+					.col-md-8
+						p Invoice #: {{invoiceId}}
+						p Value to pay: {{invoiceValue}}
+						p Invoice status: {{invoiceStatus}}
+
+						i @TODO: Validate Input Value
+						.input-group
+							span.input-group-addon I will pay
+							input.form-control(type="text" ng-keyup="checkValue()" ng-model="actualValue")
+							span.input-group-addon BTC
+
+						br
+						br
+
+						a(href="bitcoin:{{invoiceAddress}}?amount={{actualValue}}") Click 2 Pay 
+						| Or scan the code &rarr;
+
+						br
+						br
+						div(ng-hide="$parent.invoicePaid")
+							img(src="http://preloaders.net/preloaders/484/Instagram%20loading.gif")
+							| &nbsp;Waiting for payment...
+						div(ng-show="$parent.invoicePaid")
+							p Got your payment! Amount paid - {{$parent.paidAmount}} BTC
+
+					.col-md-4
+						img(src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bitcoin:{{invoiceAddress}}?amount={{actualValue}}")
+				.row
+				hr
+				p You can check your invoice status 
+					a(href="/invoice/{{invoiceId}}" target="_blank") here
+
+		.modal-footer
+			span Snapcard.io

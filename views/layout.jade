@@ -1,0 +1,15 @@
+doctype html
+html(ng-app='snapcardApp')
+	head
+		title= title
+		link(rel='stylesheet', href='/bower/bootstrap/dist/css/bootstrap.min.css')
+	body(ng-controller="mainController")
+		.container
+			block content
+
+	script(src='/bower/jquery/dist/jquery.min.js')
+	script(src='/bower/angular/angular.min.js')
+	script(src='/bower/angular-route/angular-route.min.js')
+	script(src='/bower/angular-bootstrap/ui-bootstrap-tpls.min.js')
+	script(src='/bower/bootstrap/dist/js/bootstrap.min.js')
+	script(src='/javascripts/app.js')
